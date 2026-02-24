@@ -19,4 +19,4 @@ Vite
  ```
  ## Ekran Goruntusu
  Tarayicida http://localhost:5173 adresini ac.
- (ekran goruntusunu buraya ekle)
+ <img width="1915" height="1022" alt="Ekran görüntüsü 2026-02-24 201216" src="https://github.com/user-attachments/assets/c7e408b4-378f-416a-9edf-900aa6b14c11" />
