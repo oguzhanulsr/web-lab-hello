@@ -9,7 +9,7 @@ return (
 <p>Ad Soyad: [Oğuzhan Ulaşer]</p>
 <p>Ogrenci No: [230542014]</p>
 <p>Yazilim mühendisliği</p>
-<p>Teknoloji uyv</p>
+<p>Teknoloji fak.</p>
 <p>Tokat</p>
 </div>
 )
