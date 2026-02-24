@@ -8,6 +8,8 @@ return (
 <h2>LAB-1</h2>
 <p>Ad Soyad: [Oğuzhan Ulaşer]</p>
 <p>Ogrenci No: [230542014]</p>
+<p>Yazilim mühendisliği   </p>
+<p>Tokat </p>
 </div>
 )
 }
