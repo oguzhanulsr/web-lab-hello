@@ -1,13 +1,267 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>web-lab-hello</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oğuzhan Ulaşer | Portföy</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 10px;
+      background: black;
+      color: white;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+    }
+
+    /* Header */
+    header {
+      background: #222;
+      color: white;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+    }
+
+    section {
+      margin: 40px 0;
+    }
+
+    figure img {
+      width: 150px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    /* Kart */
+    .kart {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .kart img {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px 0;
+    }
+
+    /* Form */
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .form-grup {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      padding: 8px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 3px solid #0077cc;
+    }
+
+    small {
+      color: red;
+      display: none;
+    }
+
+    input:invalid + small,
+    textarea:invalid + small {
+      display: block;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #0077cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:focus {
+      background: #005fa3;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .sosyal a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .sosyal a:hover,
+    .sosyal a:focus {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="#icerik" class="skip-link">Ana içeriğe atla</a>
+
+<header>
+  <div class="container">
+    <h1>Oğuzhan Ulaşer</h1>
+    <nav aria-label="Ana navigasyon">
+      <ul>
+        <li><a href="#hakkimda">Hakkımda</a></li>
+        <li><a href="#projeler">Projeler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="icerik" class="container">
+
+  <section id="hakkimda">
+    <h2>Hakkımda</h2>
+
+    <figure>
+      <img src="a.png" alt="Oğuzhan Ulaşer'in vesikalık fotoğrafı">
+      <figcaption>Yazilim Mühendisliği Öğrencisi</figcaption>
+    </figure>
+
+    <p>
+      Merhaba, ben Oğuzhan. Web teknolojileri ve nesne yönelimli programlama üzerine çalışıyorum.
+      Temiz kod yazmaya ve erişilebilir tasarım prensiplerine önem veriyorum.
+    </p>
+
+    <h3>Kullandığım Teknolojiler</h3>
+    <ul>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript</li>
+      <li>Java</li>
+      <li>C#</li>
+    </ul>
+  </section>
+
+  <section id="projeler">
+    <h2>Projelerim</h2>
+
+    <article class="kart">
+      <h3>Stok Takip Uygulaması</h3>
+      <img src="proje1.png" alt="Stok takip uygulamasının ekran görüntüsü">
+      <p>Kullanıcıların stoklarının takibini kontrol ettiği otomasyon.</p>
+      <p><strong>Teknolojiler:</strong> C#, DevExpress</p>
+    </article>
+
+    <article class="kart">
+      <h3>Yapay Zeka Destekli Araç Karşılaştırma</h3>
+      <img src="proje2.jpeg" alt="Yapay Zeka Destekli Araç Karşılaştırma arayüz ekran görüntüsü">
+      <p>Veri Tabanı Yönetim Sistemleri ile yapılmış yapay zeka destekli araç karşılaştırma uygulaması.</p>
+      <p><strong>Teknolojiler:</strong> HTML, CSS</p>
+    </article>
+
+  </section>
+
+  <section id="iletisim">
+    <h2>İletişim</h2>
+
+    <form novalidate>
+      
+      <div class="form-grup">
+        <label for="ad">Ad Soyad</label>
+        <input type="text" id="ad" name="ad" required minlength="3">
+        <small role="alert">En az 3 karakter giriniz.</small>
+      </div>
+
+      <div class="form-grup">
+        <label for="email">E-posta</label>
+        <input type="email" id="email" name="email" required>
+        <small role="alert">Geçerli bir e-posta giriniz.</small>
+      </div>
+
+      <div class="form-grup">
+        <label for="mesaj">Mesaj</label>
+        <textarea id="mesaj" name="mesaj" required minlength="10"></textarea>
+        <small role="alert">Mesaj en az 10 karakter olmalıdır.</small>
+      </div>
+
+      <button type="submit">Gönder</button>
+
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Oğuzhan Ulaşer. Tüm hakları saklıdır.</p>
+    <div class="sosyal">
+      <a href="#" aria-label="GitHub profili">GitHub</a>
+      <a href="#" aria-label="LinkedIn profili">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
