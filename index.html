@@ -6,121 +6,333 @@
   <title>Oğuzhan Ulaşer | Portföy</title>
 
   <style>
-    * {
+    /* ========================================
+       DESIGN TOKENS (CSS DEĞİŞKENLERİ)
+    ======================================== */
+    :root {
+      /* Renkler */
+      --color-primary: #1E3A8A;
+      --color-secondary: #2563EB;
+      --color-accent: #7C3AED;
+      --color-bg: #FFFFFF;
+      --color-text: #1F2937;
+      --color-muted: #6B7280;
+      --color-surface: #F9FAFB;
+      --color-border: #E5E7EB;
+      --color-error: #DC2626;
+      --color-success: #16A34A;
+
+      /* Spacing */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+
+      /* Radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      /* Yazı tipleri */
+      --font-sans: system-ui, -apple-system, sans-serif;
+      --font-mono: "Fira Code", "Consolas", monospace;
+
+      /* Fluid typography */
+      --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+      --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.35rem);
+      --text-xl: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+      --text-2xl: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+      --text-3xl: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+
+      /* Gölge ve geçişler */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --transition-fast: 150ms ease;
+      --transition-normal: 300ms ease;
+    }
+
+    /* ========================================
+       MOBİL VARSAYILAN (0 - 639px) - MOBILE FIRST
+    ======================================== */
+
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
       line-height: 1.6;
-      background: #f4f4f4;
-      color: #333;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     .container {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px 0;
+      width: 100%;
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
     }
 
     /* Skip Link */
     .skip-link {
       position: absolute;
       left: -9999px;
-      top: 10px;
-      background: black;
-      color: white;
-      padding: 8px;
+      top: var(--space-sm);
+      background: #000;
+      color: #fff;
+      padding: var(--space-xs) var(--space-sm);
       z-index: 100;
     }
 
     .skip-link:focus {
-      left: 10px;
+      left: var(--space-sm);
     }
 
-    /* Header */
+    /* ===== HEADER & NAV (FLEXBOX) ===== */
     header {
-      background: #222;
-      color: white;
-      padding: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-md) var(--space-md);
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    header h1 {
-      margin-bottom: 10px;
+    .site-title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-primary);
     }
 
     nav ul {
-      list-style: none;
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: var(--space-sm);
+      padding: 0;
+      margin: 0;
     }
 
     nav a {
-      color: white;
+      display: inline-block;
+      padding: var(--space-xs) var(--space-md);
+      color: var(--color-text);
       text-decoration: none;
+      border-radius: var(--radius-md);
+      transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+      font-size: var(--text-sm);
     }
 
     nav a:hover,
     nav a:focus {
-      text-decoration: underline;
+      background-color: var(--color-primary);
+      color: var(--color-bg);
+    }
+
+    /* Mobilde header dikey */
+    @media (max-width: 639px) {
+      header {
+        flex-direction: column;
+        gap: var(--space-sm);
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      nav a {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    /* ===== GENEL BÖLÜM AYARLARI ===== */
+    main {
+      margin-top: var(--space-xl);
     }
 
     section {
-      margin: 40px 0;
+      padding: var(--space-xl) 0;
     }
 
-    figure img {
-      width: 150px;
-      border-radius: 8px;
-      margin: 10px 0;
+    section h2 {
+      font-size: var(--text-2xl);
+      color: var(--color-primary);
+      margin-bottom: var(--space-lg);
+      text-align: center;
     }
 
-    /* Kart */
-    .kart {
-      background: white;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-    }
-
-    .kart img {
-      width: 100%;
-      max-width: 400px;
-      margin: 10px 0;
-    }
-
-    /* Form */
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-    }
-
-    .form-grup {
-      margin-bottom: 15px;
+    /* ===== HAKKIMDA BÖLÜMÜ ===== */
+    .about-content {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
+      text-align: center;
     }
 
-    input, textarea {
-      padding: 8px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
+    .about-content figure {
+      max-width: 12.5rem; /* 200px */
+    }
+
+    .about-content img {
+      border-radius: var(--radius-full);
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .about-content p {
+      max-width: 36rem;
+      color: var(--color-muted);
+    }
+
+    /* Beceri etiketleri (Flex toolbar) */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      list-style: none;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .skill-tags li {
+      background-color: var(--color-primary);
+      color: var(--color-bg);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+    }
+
+    /* ===== PROJELER (GRID KARTLAR) ===== */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr)); /* 280px */
+      gap: var(--space-xl);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 12.5rem; /* 200px */
+      object-fit: cover;
+    }
+
+    .project-card h3,
+    .project-card p,
+    .project-card .skill-tags {
+      padding: 0 var(--space-lg);
+    }
+
+    .project-card h3 {
+      margin-top: var(--space-md);
+      font-size: var(--text-lg);
+    }
+
+    .project-card p {
+      color: var(--color-muted);
+      flex-grow: 1;
+      margin-top: var(--space-sm);
+    }
+
+    .project-card .skill-tags {
+      padding-bottom: var(--space-lg);
+      margin-top: auto;
+    }
+
+    /* ===== İLETİŞİM FORMU ===== */
+    form {
+      background: var(--color-surface);
+      padding: var(--space-lg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: var(--space-md);
+    }
+
+    label {
+      display: block;
+      margin-bottom: var(--space-xs);
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: var(--text-base);
+      transition: border-color var(--transition-fast);
+    }
+
+    textarea {
+      min-height: 6rem;
+      resize: vertical;
     }
 
     input:focus,
     textarea:focus {
-      outline: 3px solid #0077cc;
+      border-color: var(--color-primary);
+      outline: 2px solid var(--color-secondary);
+      outline-offset: 2px;
     }
 
     small {
-      color: red;
+      color: var(--color-error);
       display: none;
+      font-size: var(--text-sm);
     }
 
     input:invalid + small,
@@ -128,36 +340,86 @@
       display: block;
     }
 
-    button {
-      padding: 10px 15px;
+    button[type="submit"] {
+      width: 100%;
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--color-primary);
+      color: var(--color-bg);
       border: none;
-      background: #0077cc;
-      color: white;
-      border-radius: 4px;
+      border-radius: var(--radius-md);
+      font-size: var(--text-base);
       cursor: pointer;
+      transition: background var(--transition-fast);
     }
 
-    button:hover,
-    button:focus {
-      background: #005fa3;
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background: var(--color-secondary);
     }
 
+    /* ===== FOOTER ===== */
     footer {
-      background: #222;
-      color: white;
       text-align: center;
-      padding: 20px 0;
+      padding: var(--space-xl) var(--space-md);
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: var(--text-sm);
     }
 
     .sosyal a {
-      color: white;
-      margin: 0 10px;
+      color: var(--color-primary);
+      margin: 0 var(--space-sm);
       text-decoration: none;
+      font-size: var(--text-sm);
     }
 
     .sosyal a:hover,
     .sosyal a:focus {
       text-decoration: underline;
+    }
+
+    /* ========================================
+       TABLET (640px ve üzeri)
+    ======================================== */
+    @media (min-width: 640px) {
+      section {
+        padding: var(--space-2xl) 0;
+      }
+
+      .about-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .about-content figure {
+        flex-shrink: 0;
+      }
+
+      button[type="submit"] {
+        width: auto;
+      }
+    }
+
+    /* ========================================
+       MASAÜSTÜ (1024px ve üzeri)
+    ======================================== */
+    @media (min-width: 1024px) {
+      main {
+        max-width: 75rem;
+        margin: 0 auto;
+      }
+
+      section {
+        padding: var(--space-3xl) 0;
+      }
+
+      /* Masaüstünde en az 3 sütun kart */
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
@@ -168,7 +430,8 @@
 
 <header>
   <div class="container">
-    <h1>Oğuzhan Ulaşer</h1>
+    <h1 class="site-title">Oğuzhan Ulaşer</h1>
+
     <nav aria-label="Ana navigasyon">
       <ul>
         <li><a href="#hakkimda">Hakkımda</a></li>
@@ -176,6 +439,7 @@
         <li><a href="#iletisim">İletişim</a></li>
       </ul>
     </nav>
+
   </div>
 </header>
 
@@ -184,42 +448,54 @@
   <section id="hakkimda">
     <h2>Hakkımda</h2>
 
-    <figure>
-      <img src="a.png" alt="Oğuzhan Ulaşer'in vesikalık fotoğrafı">
-      <figcaption>Yazilim Mühendisliği Öğrencisi</figcaption>
-    </figure>
+    <div class="about-content">
+      <figure>
+        <img src="a.png" alt="Oğuzhan Ulaşer'in vesikalık fotoğrafı">
+        <figcaption>Yazılım Mühendisliği Öğrencisi</figcaption>
+      </figure>
 
-    <p>
-      Merhaba, ben Oğuzhan. Web teknolojileri ve nesne yönelimli programlama üzerine çalışıyorum.
-      Temiz kod yazmaya ve erişilebilir tasarım prensiplerine önem veriyorum.
-    </p>
+      <div>
+        <p>
+          Merhaba, ben Oğuzhan. Web teknolojileri ve nesne yönelimli programlama üzerine çalışıyorum.
+          Temiz kod yazmaya ve erişilebilir tasarım prensiplerine önem veriyorum.
+        </p>
 
-    <h3>Kullandığım Teknolojiler</h3>
-    <ul>
-      <li>HTML5</li>
-      <li>CSS3</li>
-      <li>JavaScript</li>
-      <li>Java</li>
-      <li>C#</li>
-    </ul>
+        <h3>Kullandığım Teknolojiler</h3>
+        <ul class="skill-tags" role="list" aria-label="Beceri etiketleri">
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+          <li>Java</li>
+          <li>C#</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section id="projeler">
     <h2>Projelerim</h2>
 
-    <article class="kart">
-      <h3>Stok Takip Uygulaması</h3>
-      <img src="proje1.png" alt="Stok takip uygulamasının ekran görüntüsü">
-      <p>Kullanıcıların stoklarının takibini kontrol ettiği otomasyon.</p>
-      <p><strong>Teknolojiler:</strong> C#, DevExpress</p>
-    </article>
+    <div class="project-grid">
+      <article class="project-card">
+        <img src="proje1.png" alt="Stok takip uygulamasının ekran görüntüsü">
+        <h3>Stok Takip Uygulaması</h3>
+        <p>Kullanıcıların stoklarının takibini kontrol ettiği otomasyon.</p>
+        <ul class="skill-tags" role="list" aria-label="Projede kullanılan teknolojiler">
+          <li>C#</li>
+          <li>DevExpress</li>
+        </ul>
+      </article>
 
-    <article class="kart">
-      <h3>Yapay Zeka Destekli Araç Karşılaştırma</h3>
-      <img src="proje2.jpeg" alt="Yapay Zeka Destekli Araç Karşılaştırma arayüz ekran görüntüsü">
-      <p>Veri Tabanı Yönetim Sistemleri ile yapılmış yapay zeka destekli araç karşılaştırma uygulaması.</p>
-      <p><strong>Teknolojiler:</strong> HTML, CSS</p>
-    </article>
+      <article class="project-card">
+        <img src="proje2.jpeg" alt="Yapay Zeka Destekli Araç Karşılaştırma arayüz ekran görüntüsü">
+        <h3>Yapay Zeka Destekli Araç Karşılaştırma</h3>
+        <p>Veri tabanı yönetim sistemleri ile geliştirilmiş yapay zeka destekli araç karşılaştırma uygulaması.</p>
+        <ul class="skill-tags" role="list" aria-label="Projede kullanılan teknolojiler">
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </article>
+    </div>
 
   </section>
 
@@ -228,19 +504,19 @@
 
     <form novalidate>
       
-      <div class="form-grup">
+      <div class="form-group">
         <label for="ad">Ad Soyad</label>
         <input type="text" id="ad" name="ad" required minlength="3">
         <small role="alert">En az 3 karakter giriniz.</small>
       </div>
 
-      <div class="form-grup">
+      <div class="form-group">
         <label for="email">E-posta</label>
         <input type="email" id="email" name="email" required>
         <small role="alert">Geçerli bir e-posta giriniz.</small>
       </div>
 
-      <div class="form-grup">
+      <div class="form-group">
         <label for="mesaj">Mesaj</label>
         <textarea id="mesaj" name="mesaj" required minlength="10"></textarea>
         <small role="alert">Mesaj en az 10 karakter olmalıdır.</small>
