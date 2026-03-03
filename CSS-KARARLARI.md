@@ -1,27 +1,4 @@
-# Web LAB-1- Hello Project
- ## Hakkinda
- Bu proje, Web Tasarimi ve Programlama dersi LAB-1 kapsaminda
-Vite + React + TypeScript kullanilarak olusturulmustur.
-## Gelistirici
-**Ad Soyad:** [Oğuzhan Ulaşer]
-**Ogrenci No:** [230542014]
- ## Kullanilan Teknolojiler
-React 18
-TypeScript
-Vite
- ## Kurulum
- ```bash
- npm install
- ```
- ## Calistirma
- ```bash
- npm run dev
- ```
- ## Ekran Goruntusu
- Tarayicida http://localhost:5173 adresini ac.
- (ekran goruntusunu buraya ekle)
-
- ## CSS Kararlı Notları 
+## CSS Kararlı Notları 
   ## 1. Breakpoint Secimi
  640px → Tablet / küçük ekranlar için uygun, genellikle iPad ve orta boy cihazları kapsıyor.
  1024px → Masaüstü ve büyük ekranlar için, layout genişleyip daha fazla içerik yan yana sığacak şekilde optimize ediliyor.
@@ -47,4 +24,3 @@ Vite
    img { max-width: 100%; height: auto; } ile responsive
    Hakkımda fotoğrafı: aspect-ratio: 1; object-fit: cover
    Proje kartları: fixed height ve object-fit: cover
-
