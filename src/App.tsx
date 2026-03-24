@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import Alert from './components/Alert'
 import Button from './components/Button'
 import Card from './components/Card'
 import Input from './components/Input'
 import UIKit from './pages/UIKit'
+import Lab5Projects from './pages/Lab5Projects'
 import profileImage from '../a.png'
 import project1Image from '../proje1.png'
 import project2Image from '../proje2.jpeg'
@@ -43,7 +43,7 @@ function SkillTag({ children }: { children: string }) {
 
 function App() {
   const [showUiKit, setShowUiKit] = useState(false)
-  const [alertOpen, setAlertOpen] = useState(true)
+  const [showLab5, setShowLab5] = useState(false)
 
   const projects = useMemo(
     () => [
@@ -82,6 +82,27 @@ function App() {
           </div>
         </header>
         <UIKit />
+      </div>
+    )
+  }
+
+  if (showLab5) {
+    return (
+      <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-white">
+        <ThemeToggle />
+        <header className="sticky top-0 z-40 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-3 sm:flex-row">
+            <h1 className="text-xl font-bold text-primary dark:text-blue-300">
+              LAB-5 Uygulaması
+            </h1>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" onClick={() => setShowLab5(false)}>
+                Portföye Dön
+              </Button>
+            </div>
+          </div>
+        </header>
+        <Lab5Projects />
       </div>
     )
   }
@@ -133,25 +154,17 @@ function App() {
                   UI Kit
                 </Button>
               </li>
+              <li>
+                <Button variant="primary" size="sm" onClick={() => setShowLab5(true)}>
+                  LAB-5
+                </Button>
+              </li>
             </ul>
           </nav>
         </div>
       </header>
 
       <main id="main-content">
-        {alertOpen && (
-          <div className="mx-auto max-w-6xl px-4 pt-6">
-            <Alert
-              variant="info"
-              title="LAB-4"
-              dismissible
-              onDismiss={() => setAlertOpen(false)}
-            >
-              Bu sayfa Tailwind CSS ile stillendi. Sağ üstten dark mode aç/kapat.
-            </Alert>
-          </div>
-        )}
-
         <section id="hakkimda" className="px-4 py-16">
           <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 md:flex-row md:items-start">
             <figure className="shrink-0">
@@ -229,7 +242,6 @@ function App() {
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault()
-                // LAB-4 kapsamı: görsel form + erişilebilir alanlar
               }}
             >
               <Input id="name" label="Ad Soyad" required placeholder="Oğuzhan Ulaşer" />
