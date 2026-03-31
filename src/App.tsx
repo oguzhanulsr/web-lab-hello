@@ -4,6 +4,7 @@ import Card from './components/Card'
 import Input from './components/Input'
 import UIKit from './pages/UIKit'
 import Lab5Projects from './pages/Lab5Projects'
+import Lab6Checkpoint from './pages/Lab6Checkpoint'
 import profileImage from '../a.png'
 import project1Image from '../proje1.png'
 import project2Image from '../proje2.jpeg'
@@ -44,6 +45,7 @@ function SkillTag({ children }: { children: string }) {
 function App() {
   const [showUiKit, setShowUiKit] = useState(false)
   const [showLab5, setShowLab5] = useState(false)
+  const [showLab6, setShowLab6] = useState(false)
 
   const projects = useMemo(
     () => [
@@ -107,6 +109,22 @@ function App() {
     )
   }
 
+  if (showLab6) {
+    return (
+      <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-white">
+        <ThemeToggle />
+        <Button
+          variant="ghost"
+          onClick={() => setShowLab6(false)}
+          className="fixed left-4 top-4 z-50"
+        >
+          Portföye Dön
+        </Button>
+        <Lab6Checkpoint />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-white">
       <ThemeToggle />
@@ -157,6 +175,11 @@ function App() {
               <li>
                 <Button variant="primary" size="sm" onClick={() => setShowLab5(true)}>
                   LAB-5
+                </Button>
+              </li>
+              <li>
+                <Button variant="primary" size="sm" onClick={() => setShowLab6(true)}>
+                  LAB-6
                 </Button>
               </li>
             </ul>
